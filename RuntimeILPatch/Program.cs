@@ -1,7 +1,17 @@
-﻿namespace RuntimeILPatch {
+﻿using System;
+
+namespace RuntimeILPatch {
     class Program {
         static void Main(string[] args) {
-            JIT.Hook();
+            var jit = new JIT();
+
+            jit.Hook();
+
+            Console.WriteLine(Answer());
+        }
+
+        static int Answer() {
+            return 0;
         }
     }
 }
