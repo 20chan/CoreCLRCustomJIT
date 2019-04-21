@@ -10,11 +10,12 @@ This project hook JIT compiler at runtime and replace it, so you could hook comp
 void Main() {
     var jit = new JIT();
     jit.HookMethod(this.GetType().GetMethod(nameof(One)), code => {
+        // Makes return data of method `One` 1 to 2
         Marshal.WriteByte(code, 37, 2);
     });
 
     if (jit.Hook()) {
-        Console.WriteLine(One());
+        Console.WriteLine(One()); // 2
     }
 }
 
